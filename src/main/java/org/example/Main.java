@@ -56,7 +56,7 @@ class Bird extends Animal {
     }
 }
 
-class Dog extends Mammal {
+class Dog extends Mammal implements Playable {
     public Dog(String name, int age) {
         super(name, age);
     }
@@ -73,6 +73,11 @@ class Dog extends Mammal {
     @Override
     public void eat() {
         System.out.println(name + " is chewing on a bone.");
+    }
+
+    @Override
+    public void play(){
+        System.out.println(name + " is playing with a ball.");
     }
 }
 
@@ -110,6 +115,12 @@ public class Main {
             animal.makeSound();
             animal.eat();
             System.out.println();
+        }
+
+        Toy barbie = new Toy("Barbie");
+        Playable[] playables = {myDog, barbie};
+        for (Playable playable : playables) {
+            playable.play();
         }
     }
 }
